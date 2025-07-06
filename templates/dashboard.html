@@ -1,0 +1,262 @@
+    {% include 'header_dashboard.html' %}
+
+    <style>
+        /* Banner Carousel Styling */
+        .carousel-inner img {
+            height: 400px; /* Set a fixed height for all images */
+            object-fit: cover; /* Ensure images fit properly */
+            border-radius: 15px;
+        }
+        /* How It Works Section */
+        .how-it-works {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .step-card {
+            width: 300px;
+            background: #f8fff8;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0px 10px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        .carousel {
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* Input Card Styling */
+        .card {
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background: linear-gradient(135deg, #f3f7f3, #d7f2d7);
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Animation */
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            transition: 0.3s;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Input Field Styling */
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #28a745;
+            transition: 0.3s;
+        }
+        .form-control:focus {
+            border-color: #218838;
+            box-shadow: 0px 5px 10px rgba(40, 167, 69, 0.3);
+        }
+        /* Reviews Section */
+        .reviews {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 100px;
+        }
+
+        .review-card {
+            background: #f3f7f3;
+            padding: 20px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .review-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .review-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #28a745;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #555;
+        }   
+    </style>
+
+    <!-- Sliding Rotating Banner -->
+    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://media.istockphoto.com/id/941858854/photo/herbs-and-spices-for-cooking-on-dark-background.jpg?s=612x612&w=0&k=20&c=-quRLbD1Hkd2-i_I-uqJltiA516alqGNojlobB6nZ7A=" class="d-block w-100" alt="Healthy Food">
+            </div>
+            <div class="carousel-item">
+                <img src="https://aaft.com/blog/wp-content/uploads/2024/09/pikaso_texttoimage_Steps-to-Becoming-a-Professional-Chef-in-India.jpeg" class="d-block w-100" alt="Fresh Ingredients">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.the-sun.com/wp-content/uploads/sites/6/2018/10/hd-recipes-mobile-image-750x352px.jpg?strip=all&w=750&h=352&crop=1" class="d-block w-100" alt="Nutritious Meals">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <!-- How It Works Section -->
+    <h2 class="section-title text-center mt-5 mb-5">✨ How It Works ✨</h2>
+    <div class="how-it-works">
+        <div class="step-card">
+            <i class="fas fa-pencil-alt step-icon"></i>
+            <h4>Enter Ingredients</h4>
+            <p>Type in the ingredients you have at home.</p>
+        </div>
+        <div class="step-card">
+            <i class="fas fa-camera step-icon"></i>
+            <h4>Upload an Image</h4>
+            <p>Upload an image of your ingredients.</p>
+        </div>
+        <div class="step-card">
+            <i class="fas fa-utensils step-icon"></i>
+            <h4>Find Recipes</h4>
+            <p>Get the best recipes based on your ingredients.</p>
+        </div>
+    </div>
+    <div class="container mt-4 pt-4">
+        <h2 class="text-center">🍏 Get Your Recipe</h2>
+
+        <div class="card shadow-lg mt-4 p-4">
+            <h2 class="text-center text-success fw-bold">Enter Your Ingredients</h2>
+            <p class="text-center text-muted">You can type your ingredients, upload an image, or do both!</p>
+
+            <form action="/process_ingredients" method="POST" enctype="multipart/form-data">
+                <!-- Ingredients Input -->
+                <div class="mb-3">
+                    <label for="ingredients" class="form-label fw-bold">Enter Ingredients (comma-separated)</label>
+                    <input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="e.g., Tomato, Onion, Garlic">
+                </div>
+
+                
+
+                <!-- Dietary Preferences (Optional) -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Dietary Preferences (Optional)</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="vegetarian" name="dietary[]" value="vegetarian">
+                            <label class="form-check-label" for="vegetarian">Vegetarian</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="vegan" name="dietary[]" value="vegan">
+                            <label class="form-check-label" for="vegan">Vegan</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="keto" name="dietary[]" value="keto">
+                            <label class="form-check-label" for="keto">Keto</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gluten_free" name="dietary[]" value="gluten free">
+                            <label class="form-check-label" for="gluten_free">Gluten-Free</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Health-Conscious Option (Dropdown) -->
+                <div class="mb-3">
+                    <label for="health_filter" class="form-label fw-bold">Health Preference (Optional)</label>
+                    <select class="form-select" id="health_filter" name="health_filter">
+                        <option value="">-- Select an Option --</option>
+                        <option value="low-calorie">Low Calorie</option>
+                        <option value="high-protein">High Protein</option>
+                        <option value="low-carb">Low Carb</option>
+                        <option value="sugar-free">Sugar-Free</option>
+                    </select>
+                </div>
+
+                <!-- Calorie Input -->
+                <div class="mb-3">
+                    <label for="calories" class="form-label fw-bold">Calorie Limit (Optional)</label>
+                    <input type="number" class="form-control" id="calories" name="calories" min="50" max="2000" placeholder="Enter max calories (e.g., 500)">
+                    <small class="text-muted">Specify the max calorie limit per serving.</small>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-lg">Find Recipes</button>
+                </div>
+            </form>
+
+<!--
+
+            <BR><BR><h1 class="text-center">Or Upload an Image</h1>
+            <form action="/process_image" method="POST" enctype="multipart/form-data">
+            
+                <div class="mb-3">
+                    <label for="ingredients" class="form-label fw-bold">Upload an Image</label>
+                    
+                    <input type="file" class="form-control" name="image" accept="image/*" required>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-lg">Find Recipes</button>
+                </div>
+            </form>
+        -->
+        </div>
+    </div>
+
+
+    <!-- Reviews Section -->
+    <!-- Reviews Section -->
+    <h2 class="section-title mt-5 pt-5 text-center">⭐ User Reviews ⭐</h2>
+    <div class="reviews">
+        <div class="review-card">
+            <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="User" class="review-img">
+            <h5>Emily R.</h5>
+            <p class="review-text">"This app helped me cook with what I already had. Love it!"</p>
+        </div>
+        <div class="review-card">
+            <img src="https://randomuser.me/api/portraits/men/20.jpg" alt="User" class="review-img">
+            <h5>John D.</h5>
+            <p class="review-text">"No more wasted ingredients! Amazing app."</p>
+        </div>
+        <div class="review-card">
+            <img src="https://randomuser.me/api/portraits/women/15.jpg" alt="User" class="review-img">
+            <h5>Sarah K.</h5>
+            <p class="review-text">"Perfect for meal planning. Highly recommended!"</p>
+        </div>
+    </div>
+
+    {% include 'footer_dashboard.html' %}

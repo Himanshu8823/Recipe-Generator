@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3f7f3, #d7f2d7);
+            font-family: 'Poppins', sans-serif;
+        }
+        .recipe-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .recipe-img {
+            border-radius: 10px;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .back-btn {
+            background: #28a745;
+            border: none;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'header_dashboard.html' %}
+
+    <div class="container mt-5">
+        <div class="recipe-container p-4">
+            <h2 class="text-center text-success fw-bold">{{ recipe.title }}</h2>
+            <img src="{{ recipe.image }}" class="recipe-img mb-4" alt="{{ recipe.title }}">
+
+            <form action="/add_favorite" method="POST">
+                <input type="hidden" name="recipe_id" value="{{ recipe.id }}">
+                <input type="hidden" name="title" value="{{ recipe.title }}">
+                <input type="hidden" name="image" value="{{ recipe.image }}">
+                <button type="submit" class="btn btn-warning mt-2 text-centers">⭐ Add to Favorites</button>
+            </form>
+            
+            <!-- Display Calories -->
+            {% if recipe.calories %}
+                <h4>🔥 Calories:</h4>
+                <p>{{ recipe.calories }} kcal per serving</p>
+            {% endif %}
+
+            <!-- Display Dietary Preferences -->
+            {% if recipe.dietary_preferences %}
+                <h4>🌿 Dietary Preferences:</h4>
+                <ul>
+                    {% for preference in recipe.dietary_preferences %}
+                        <li>{{ preference }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <h4>🍽️ Ingredients:</h4>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient.amount }} {{ ingredient.unit }} - {{ ingredient.name }}</li>
+                {% endfor %}
+            </ul>
+
+            <h4>📝 Cooking Steps:</h4>
+            {% if recipe.instructions %}
+                <ol>
+                    {% for step in recipe.instructions %}
+                        <li>{{ step }}</li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>No instructions available for this recipe.</p>
+            {% endif %}
+
+            <h4>⚠️ Precautions & Measures:</h4>
+            <p>{{ recipe.precautions }}</p>
+
+            <a href="{{ url_for('dashboard') }}" class="btn back-btn text-white mt-3">🔙 Back to Recipes</a>
+        </div>
+    </div>
+
+    {% include 'footer_dashboard.html' %}
+
+</body>
+</html>

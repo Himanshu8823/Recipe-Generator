@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #e3f2e3, #ffffff);
+            font-family: 'Poppins', sans-serif;
+            color: #2d6a4f;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .recipes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .recipe-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+
+        .recipe-card img {
+            width: 100%;
+            border-radius: 15px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recipe-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .view-recipe-btn {
+            background-color: #2d6a4f;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .view-recipe-btn:hover {
+            background-color: #40916c;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header_dashboard.html' %}
+    <h1 class="text-center mt-5">🍲 Explore Our Delicious Recipes 🍽️</h1>
+    <div class="recipes-container mt-5 mb-5" id="recipesContainer">
+        {% for recipe in recipes %}
+        <div class="recipe-card">
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+            <div class="recipe-title">{{ recipe.title }}</div>
+            <a href="/full_recipe/{{ recipe.id }}">
+                <button class="view-recipe-btn">View Recipe</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% include 'header_dashboard.html' %}
+</body>
+</html>

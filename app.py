@@ -22,7 +22,8 @@ DB_USER = "root"
 DB_PASSWORD = ""
 DB_NAME = "recipe"
 
-SPOONACULAR_API_KEY="bec2204f34be4336845b7e8635ebe4a4"
+# Use your own API KEY
+SPOONACULAR_API_KEY=""
 # Function to Connect to Database
 def get_db_connection():
     try:
